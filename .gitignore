@@ -1,0 +1,99 @@
+/venv
+\venv
+backend/venv
+backend/.env/
+.env/
+# -------------------------
+# Python / Flask
+# -------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Environment variables
+.env
+*.env
+
+# SQLite database files
+*.db
+*/database/*.db
+*/instance/*.db
+
+# Logs
+*.log
+logs/
+log/
+
+# Cache
+*.cache
+.cache/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Model cache (HuggingFace)
+~/.cache/huggingface/
+huggingface/
+hf_cache/
+model_cache/
+
+# Byte-compiled files
+*.pyo
+*.pyd
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
+
+# Compiled C extensions
+*.so
+
+# Testing & Coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+
+# MacOS junk
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Deployment
+.env.*.local
+.env.local
+.env.production
+.env.development
+
+# Misc
+*.bak
+*.temp
+*.tmp
+

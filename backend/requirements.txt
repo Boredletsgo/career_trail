@@ -1,0 +1,9 @@
+flask
+flask_sqlalchemy
+flask_cors
+pydantic
+python-dotenv
+transformers
+sentencepiece
+# torch is optional but recommended for local model inference
+torch
