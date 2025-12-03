@@ -1,5 +1,6 @@
 from app import db
 from datetime import datetime
+
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -38,11 +39,11 @@ class RecommendationDetail(db.Model):
     __tablename__ = 'recommendation_details'
     id = db.Column(db.Integer, primary_key=True)
     recommendation_id = db.Column(db.Integer, db.ForeignKey('recommendations.id'))
-    career_path = db.Column(db.Text) # JSON string
-    skills_gap = db.Column(db.Text) # JSON string
-    certifications = db.Column(db.Text) # JSON string
-    learning_plan = db.Column(db.Text) # JSON string
-    roadmap = db.Column(db.Text) # JSON string
+    career_path = db.Column(db.Text)  # JSON string
+    skills_gap = db.Column(db.Text)  # JSON string
+    certifications = db.Column(db.Text)  # JSON string
+    learning_plan = db.Column(db.Text)  # JSON string
+    roadmap = db.Column(db.Text)  # JSON string
 
 
 class ActivityLog(db.Model):
