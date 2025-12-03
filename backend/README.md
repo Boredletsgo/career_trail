@@ -12,3 +12,13 @@ CareerTrail - Backend
 - The career generator uses a HuggingFace model if available (set HF_MODEL_NAME). If not available, a rule-based fallback will be used.
 - Do NOT commit `.env` to git. Put secrets in GitHub Actions secrets for CI/CD deployment.
 
+## Checking DB
+
+from app import create_app, db
+from sqlalchemy import inspect
+
+app = create_app()
+
+with app.app_context():
+    inspector = inspect(db.engine)
+    print(inspector.get_table_names())

@@ -3,15 +3,16 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 import os
 
-# Initialize DB instance
 db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__)
     CORS(app)
 
-    # --- Correct SQLite DB path ---
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///careertrail.db'
+    # --- Use env variable OR fallback to SQLite ---
+    db_path = os.getenv('DATABASE_URL', 'sqlite:///careertrail.db')
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_path
+
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     # init DB
