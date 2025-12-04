@@ -38,9 +38,9 @@ def create_app():
     app.register_blueprint(auth_bp, url_prefix="/api")
 
     # Create all tables
-    with app.app_context():
-        db.create_all()
-        print("✅ Database & tables created successfully!")
+    # with app.app_context():
+    #     db.create_all()
+    #     print("✅ Database & tables created successfully!")-already in create.py
 
     return app
 
