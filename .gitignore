@@ -25,6 +25,7 @@ package-lock.json
 *.db
 */database/*.db
 */instance/*.db
+frontend--old/
 
 # Logs
 *.log

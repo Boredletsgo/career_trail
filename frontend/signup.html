@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareerTrail - Login</title>
+    <title>CareerTrail - Signup</title>
     <link rel="stylesheet" href="css/auth.css">
 </head>
 <body>
 
 <div class="container">
-    <h2>CareerTrail Login</h2>
+    <h2>Create an Account</h2>
 
-    <form id="loginForm">
+    <form id="signupForm">
+        <label>Full Name</label>
+        <input type="text" id="name" required>
+
         <label>Email</label>
         <input type="email" id="email" required>
 
         <label>Password</label>
         <input type="password" id="password" required>
 
-        <button type="submit">Login</button>
+        <button type="submit">Signup</button>
 
-        <p>Don't have an account?
-            <a href="signup.html">Signup</a>
+        <p>Already have an account?
+            <a href="index.html">Login</a>
         </p>
     </form>
 

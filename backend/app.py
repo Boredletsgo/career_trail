@@ -14,6 +14,9 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = db_path
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config["SECRET_KEY"] = "$uper$ecret"
+
+    CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
     # init DB
     db.init_app(app)
