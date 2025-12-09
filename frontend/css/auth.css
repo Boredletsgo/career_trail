@@ -53,3 +53,11 @@ button:hover {
     text-align: center;
     color: red;
 }
+.auth-box {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 80px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+}

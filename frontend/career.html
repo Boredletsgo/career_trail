@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Career — CareerTrail</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <h2>CareerTrail</h2>
+        <div>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="skills.html">Skills</a>
+            <a href="career.html" class="active">Career</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="profile.html">Profile</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Career Recommendation</h1>
+
+        <form id="careerForm" class="card">
+            <label>Dream Role</label>
+            <input type="text" id="dream_role" required>
+
+            <label>Your Experience Level</label>
+            <select id="experience">
+                <option>Fresher</option>
+                <option>Junior</option>
+                <option>Mid</option>
+                <option>Senior</option>
+            </select>
+
+            <label>Learning Style</label>
+            <select id="learning_style">
+                <option>Video</option>
+                <option>Reading</option>
+                <option>Hands-on</option>
+            </select>
+
+            <button type="submit" class="btn">Generate</button>
+        </form>
+
+        <div id="careerOutput" class="card hidden"></div>
+    </div>
+
+    <script src="js/career.js"></script>
+</body>
+</html>

@@ -17,7 +17,7 @@ if (document.getElementById("loginForm")) {
         const data = await res.json();
 
         if (res.ok) {
-            localStorage.setItem("token", data.token);
+            localStorage.setItem("token", data.user_id);
             window.location.href = "dashboard.html";
         } else {
             document.getElementById("message").innerText = data.message;
