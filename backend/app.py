@@ -1,27 +1,34 @@
+
 from flask import Flask
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
+from extensions import db
 import os
 
-db = SQLAlchemy()
+
 
 def create_app():
     app = Flask(__name__)
-    CORS(app)
 
-    # --- Use env variable OR fallback to SQLite ---
+    # Database
     db_path = os.getenv('DATABASE_URL', 'sqlite:///careertrail.db')
     app.config['SQLALCHEMY_DATABASE_URI'] = db_path
-
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config["SECRET_KEY"] = "$uper$ecret"
 
-    CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
+    # --- CORS: allow your frontend origins; credentials if you need cookies/sessions ---
+    CORS(
+        app,
+        resources={r"/api/*": {"origins": [
+            "http://127.0.0.1:5500",
+            "http://localhost:5500"
+        ]}},
+        supports_credentials=True
+    )
 
-    # init DB
+    # Init DB
     db.init_app(app)
 
-    # import models BEFORE create_all()
+    # Import models BEFORE usage
     from models import (
         User,
         SkillMaster,
@@ -31,23 +38,17 @@ def create_app():
         ActivityLog
     )
 
-    # Register routes
+    # Register routes with explicit prefixes that match the fetch URLs
     from routes.career import career_bp
     from routes.skills import skills_bp
     from routes.auth import auth_bp
 
-    app.register_blueprint(career_bp, url_prefix="/api")
-    app.register_blueprint(skills_bp, url_prefix="/api")
-    app.register_blueprint(auth_bp, url_prefix="/api")
-
-    # Create all tables
-    # with app.app_context():
-    #     db.create_all()
-    #     print("✅ Database & tables created successfully!")-already in create.py
+    app.register_blueprint(career_bp, url_prefix="/api/career")
+    app.register_blueprint(skills_bp,  url_prefix="/api/skills")
+    app.register_blueprint(auth_bp,    url_prefix="/api/auth")
 
     return app
 
-
 if __name__ == "__main__":
     app = create_app()
-    app.run(debug=True)
+    app.run(host="127.0.0.1", port=5000, debug=True)
