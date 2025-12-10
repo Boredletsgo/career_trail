@@ -17,10 +17,13 @@ if (document.getElementById("loginForm")) {
         const data = await res.json();
 
         if (res.ok) {
-            localStorage.setItem("token", data.user_id);
+            // Store user_id instead of token
+            localStorage.setItem("user_id", data.user_id);
+
             window.location.href = "dashboard.html";
         } else {
-            document.getElementById("message").innerText = data.message;
+            document.getElementById("message").innerText =
+                data.error || "Login failed";
         }
     });
 }
@@ -30,14 +33,14 @@ if (document.getElementById("signupForm")) {
     document.getElementById("signupForm").addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        const name = document.getElementById("name").value.trim();
+        const full_name = document.getElementById("name").value.trim();
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value;
 
         const res = await fetch(`${API_BASE}/auth/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, email, password })
+            body: JSON.stringify({ full_name, email, password })
         });
 
         const data = await res.json();
@@ -46,7 +49,8 @@ if (document.getElementById("signupForm")) {
             alert("Signup successful! Please login.");
             window.location.href = "index.html";
         } else {
-            document.getElementById("message").innerText = data.message;
+            document.getElementById("message").innerText =
+                data.error || "Signup failed";
         }
     });
 }

@@ -51,4 +51,19 @@ def generate():
 
 
     return jsonify({'recommendation_id': rec.id, 'result': result})
+from models import ActivityLog
+
+@career_bp.route('/history/<int:user_id>', methods=['GET'])
+def history(user_id):
+    logs = ActivityLog.query.filter_by(user_id=user_id).order_by(ActivityLog.created_at.desc()).all()
+
+    return jsonify([
+        {
+            "id": log.id,
+            "description": log.description,
+            "created_at": log.created_at.strftime("%Y-%m-%d %H:%M:%S")
+        }
+        for log in logs
+    ])
+
 
